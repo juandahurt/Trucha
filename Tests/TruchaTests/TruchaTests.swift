@@ -13,7 +13,7 @@ final class TruchaTests: XCTestCase {
     }
     
     func test_requestURL_shouldBeEqualToTheSumOfBasePathAndItsPath() throws {
-        let path = "/trucha"
+        let path = "/truchaas"
         let request = Trucha.sharedClient.request(path)
         XCTAssertEqual(request.url.absoluteString, basePath + path)
     }
