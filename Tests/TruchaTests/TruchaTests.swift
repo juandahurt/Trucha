@@ -2,10 +2,9 @@ import XCTest
 @testable import Trucha
 
 final class TruchaTests: XCTestCase {
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct
-        // results.
-        XCTAssertEqual(Trucha().text, "Hello, World!")
+    func test_sharedClientBasePath_shouldBeEqualToTheOneProvided() throws {
+        let basePath = "https://foo.bar"
+        Trucha.sharedClient.setBasePath(basePath)
+        XCTAssertEqual(Trucha.sharedClient.basePath, basePath)
     }
 }
