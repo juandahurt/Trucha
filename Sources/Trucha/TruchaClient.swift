@@ -16,4 +16,22 @@ public struct TruchaClient {
     public mutating func setBasePath(_ basePath: String) {
         self.basePath = basePath
     }
+    
+    /// It creates a new trucha request for you.
+    ///
+    /// If you haven't set the base path, you can pass the whole url as the `path` parameter.
+    ///
+    /// ```
+    /// // if you haven't set the base path
+    /// request("https://foo.bar/baz")
+    ///
+    /// // if you have set the base path
+    /// request("/bar")
+    /// ```
+    ///
+    /// - Parameter path: The request's path.
+    /// - Returns: The created request.
+    public func request(_ path: String) -> TruchaRequest {
+        .init(path: path)
+    }
 }
