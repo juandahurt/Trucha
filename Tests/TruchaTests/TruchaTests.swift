@@ -15,6 +15,20 @@ final class TruchaTests: XCTestCase {
     func test_requestURL_shouldBeEqualToTheSumOfBasePathAndItsPath() throws {
         let path = "/trucha"
         let request = Trucha.sharedClient.request(path)
-        XCTAssertEqual(request.url.absoluteString, basePath + path)
+        XCTAssertNotNil(request)
+        XCTAssertEqual(request!.url.absoluteString, basePath + path)
+    }
+    
+    func test_request_shouldThrowIfPathIsInvalid() throws {
+        let invalidPath = "this_is_an_invalid_path"
+        do {
+            let _ = try TruchaRequest(path: invalidPath)
+        } catch {
+            guard let truchaError = error as? TruchaError else {
+                XCTFail("wrong error thrown!!")
+                return
+            }
+            XCTAssertEqual(truchaError, .invalidURL)
+        }
     }
 }

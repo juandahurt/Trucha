@@ -15,13 +15,17 @@ public struct TruchaRequest {
     /// The request's URL.
     var url: URL
     
-    init(method: TruchaMethod = .get, path: String) {
+    init(method: TruchaMethod = .get, path: String) throws {
         self.method = method
-        if let basePath = Trucha.sharedClient.basePath, let url = URL(string: basePath + path) {
+        if let basePath = Trucha.sharedClient.basePath {
+            guard let url = URL(string: basePath + path) else {
+                throw TruchaError.invalidURL
+            }
+            self.url = url
+        } else if let url = URL(string: path) {
             self.url = url
         } else {
-            // TODO: throw error
-            self.url = .init(string: "")!
+            throw TruchaError.invalidURL
         }
     }
 }
