@@ -1,0 +1,32 @@
+{
+  "configurations" : [
+    {
+      "id" : "5AA8C9A2-B984-4039-8EA0-308CC55E11D1",
+      "name" : "Test Scheme Action",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "codeCoverage" : {
+      "targets" : [
+        {
+          "containerPath" : "container:",
+          "identifier" : "Trucha",
+          "name" : "Trucha"
+        }
+      ]
+    }
+  },
+  "testTargets" : [
+    {
+      "target" : {
+        "containerPath" : "container:",
+        "identifier" : "TruchaTests",
+        "name" : "TruchaTests"
+      }
+    }
+  ],
+  "version" : 1
+}
