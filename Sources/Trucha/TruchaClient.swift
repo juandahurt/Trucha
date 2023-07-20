@@ -34,4 +34,9 @@ public struct TruchaClient {
     public func request(_ path: String) -> TruchaRequest? {
         try? TruchaRequest(path: path)
     }
+    
+    /// To clear the client.
+    mutating func clear() {
+        basePath = nil
+    }
 }
