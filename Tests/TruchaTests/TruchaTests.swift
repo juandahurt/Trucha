@@ -46,4 +46,11 @@ final class TruchaTests: XCTestCase {
         let request = Trucha.sharedClient.request(rawUrl)
         XCTAssertNotNil(request)
     }
+    
+    func testRequestStart_withValidUrl_shouldReturnResponse() async throws {
+        let url = "https://api.publicapis.org/entries"
+        let request = Trucha.sharedClient.request(url)
+        let response = try? await request?.start()
+        dump(response)
+    }
 }
