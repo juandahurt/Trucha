@@ -11,6 +11,10 @@ import XCTest
 final class TruchaRequestTests: XCTestCase {
     let basePath = "https://foo.bar"
     
+    override func setUp() {
+        Trucha.sharedClient.clear()
+    }
+    
     func testRequestUrl_withBasePathSet_shouldBeEqualToTheSumOfBasePathAndItsPath() {
         Trucha.sharedClient.setBasePath(basePath)
         let path = "/trucha"
