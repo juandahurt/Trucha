@@ -8,34 +8,7 @@
 import Foundation
 
 /// It represents an HTTP request.
-public class TruchaRequest {
-    /// The HTTP method.
-    var method: TruchaMethod
-    
-    /// The request's URL.
-    var url: URL
-    
-    private var urlRequest: URLRequest?
-    private var dataTask: URLSessionDataTask?
-    
-    init(method: TruchaMethod = .get, path: String) throws {
-        self.method = method
-        if let basePath = Trucha.sharedClient.basePath {
-            guard let url = URL(string: basePath + path) else {
-                throw TruchaError.invalidURL
-            }
-            self.url = url
-        } else if let url = URL(string: path) {
-            self.url = url
-        } else {
-            throw TruchaError.invalidURL
-        }
-    }
-    
-    func setupUrlRequest() {
-        urlRequest = .init(url: url)
-    }
-    
+public class TruchaRequest: TruchaBaseRequest {
     func start() async throws -> URLResponse {
         setupUrlRequest()
         guard let urlRequest else { preconditionFailure("url request must not be nil") }
@@ -50,6 +23,10 @@ public class TruchaRequest {
             }
             dataTask?.resume()
         }
+    }
+    
+    func decoding<T: Decodable>(to: T.Type) -> TruchaDecodableRequest<T> {
+        .init(method: method, url: url)
     }
 }
 
