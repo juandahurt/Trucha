@@ -12,7 +12,7 @@ public class TruchaDecodableRequest<T>: TruchaBaseRequest where T: Decodable {
     /// Starts a decodable request.
     /// - Returns: The decoded response.
     func start() async throws -> T {
-        setupUrlRequest()
+        try setupUrlRequest()
         return try await withCheckedThrowingContinuation { continuation in
             dataTask = URLSession.shared.dataTask(with: urlRequest!) { data, _, error in
                 if let error {

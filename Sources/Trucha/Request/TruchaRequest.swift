@@ -10,7 +10,7 @@ import Foundation
 /// It represents an HTTP request.
 public class TruchaRequest: TruchaBaseRequest {
     func start() async throws -> URLResponse {
-        setupUrlRequest()
+        try setupUrlRequest()
         guard let urlRequest else { preconditionFailure("url request must not be nil") }
         return try await withCheckedThrowingContinuation { continuation in
             dataTask = URLSession.shared.dataTask(with: urlRequest) { data, response, error in
@@ -26,7 +26,7 @@ public class TruchaRequest: TruchaBaseRequest {
     }
     
     func decoding<T: Decodable>(to: T.Type) -> TruchaDecodableRequest<T> {
-        .init(method: method, url: url)
+        .init(method: method, path: path)
     }
 }
 
