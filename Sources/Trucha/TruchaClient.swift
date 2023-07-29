@@ -31,8 +31,8 @@ public struct TruchaClient {
     ///
     /// - Parameter path: The request's path.
     /// - Returns: The created request. It can be nil if the provided path is invalid.
-    public func request(_ path: String) -> TruchaRequest? {
-        try? TruchaRequest(path: path)
+    public func request(_ path: String) -> TruchaRequest {
+        TruchaRequest(path: path)
     }
     
     /// To clear the client.

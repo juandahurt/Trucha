@@ -9,4 +9,5 @@ import Foundation
 
 enum TruchaError: Error {
     case invalidURL
+    case unableToDecode
 }
