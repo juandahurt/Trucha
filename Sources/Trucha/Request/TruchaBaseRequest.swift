@@ -10,11 +10,11 @@ import Foundation
 public class TruchaBaseRequest {
     /// The HTTP method.
     var method: TruchaMethod
-    
     var path: String
     
     internal var urlRequest: URLRequest?
     internal var dataTask: URLSessionDataTask?
+    internal var config = TruchaRequestConfig()
     
     init(method: TruchaMethod = .get, path: String) {
         self.method = method

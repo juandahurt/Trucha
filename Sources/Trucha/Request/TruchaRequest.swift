@@ -9,6 +9,8 @@ import Foundation
 
 /// It represents an HTTP request.
 public class TruchaRequest: TruchaBaseRequest {
+    /// Starts the request.
+    /// - Returns: The server response.
     func start() async throws -> URLResponse {
         try setupUrlRequest()
         guard let urlRequest else { preconditionFailure("url request must not be nil") }
