@@ -9,7 +9,7 @@ import XCTest
 @testable import Trucha
 
 final class TruchaDecodableRequestTests: XCTestCase {
-    let url = "https://api.publicapis.org/entries"
+    let url = "http://localhost:3600"
     
     func testDecodableRequest_withValidUrl_shouldDecodeCorrectly() async {
         let res = try? await TruchaRequest(path: url)
